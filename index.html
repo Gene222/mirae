@@ -8,6 +8,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700;900&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18322165997"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18322165997');
+</script>
 <style>
   :root{
     --ink:#16253D;
@@ -503,10 +511,25 @@
     }).then(() => {
       success.classList.add('show');
       form.reset();
+      // Event snippet for 리드 양식 제출 conversion
+      if (typeof gtag === 'function') {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-18322165997/eZxnCJiv7NMcEO2h2KBE',
+          'value': 1.0,
+          'currency': 'KRW'
+        });
+      }
     }).catch(() => {
       // Even on a network hiccup, Apps Script often still receives the POST; show success but keep a fallback note.
       success.classList.add('show');
       form.reset();
+      if (typeof gtag === 'function') {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-18322165997/eZxnCJiv7NMcEO2h2KBE',
+          'value': 1.0,
+          'currency': 'KRW'
+        });
+      }
     }).finally(() => {
       submitBtn.disabled = false;
       submitBtn.textContent = '무료 진단 요청하기 →';
